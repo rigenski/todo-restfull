@@ -14,9 +14,10 @@ mongoose
   .connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
-  .then(() => console.log("sucess"));
+  .then(() => console.log("succes"));
 
-app.listen(process.env.PORT, (err) => {
+app.listen(process.env.PORT, () => {
   console.log(`connected ${process.env.PORT}`);
 });

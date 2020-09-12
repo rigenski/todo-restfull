@@ -40,21 +40,16 @@ exports.getDataByID = async (req, res) => {
 
 //  Update Data
 exports.updateTodo = async (req, res) => {
-  await Todo.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true },
-    (err, result) => {
-      if (err) {
-        return res.status(442).json({ status: "error", message: err.message });
-      }
-      res.status(200).json({
-        status: "succes",
-        message: "data has been update successfully",
-        result: result,
-      });
+  await Todo.findByIdAndUpdate(req.params.id, req.body, (err, result) => {
+    if (err) {
+      return res.status(442).json({ status: "error", message: err.message });
     }
-  );
+    res.status(200).json({
+      status: "succes",
+      message: "data has been update successfully",
+      result: result,
+    });
+  });
 };
 
 //  Delete Data
@@ -66,7 +61,6 @@ exports.deleteTodo = async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "data has been deleted successfully",
-      result: result,
     });
   });
 };
